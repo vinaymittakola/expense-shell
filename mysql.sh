@@ -4,13 +4,18 @@ USERID=$(id -u)
 TIMESTAMP=$(date +%F-%H-%M-%s)
 SCRIPTNAME=$(echo $0 | cut -d "." -f1)
 LOGFILE=/tmp/$SCRIPTNAME-$TIMESTAMP.log
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 
 VALIDATE(){
     if [$1 -ne 0]
     then
-      echo "$2 fail"
+      echo -e "$2 fail"
+      exit 1
     else 
-      echo "$2 pass"
+      echo -e "$2 pass"
     fi
 
 }
